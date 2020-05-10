@@ -1,6 +1,10 @@
-from splinter import Browser
 from bs4 import BeautifulSoup as bs
+import requests
+import os
+from splinter import Browser
+import pymongo
 import pandas as pd
+import re
 
 
 def init_browser():
@@ -19,11 +23,10 @@ def scrape():
 
     html = browser.html
     soup = bs(html, "html.parser")
+    soup
 
     final_dict["headline"] = soup.find("div", class_='list_text').find("div", class_='content_title').text
     final_dict["teaser"] = soup.find("div", class_='list_text').find("div", class_='article_teaser_body').text
-
-    browser.quit()
     
     #Grabbing the featured image
     url_img = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
@@ -31,11 +34,10 @@ def scrape():
 
     html = browser.html
     soup = bs(html, 'html.parser')
+    soup
 
     feat_img = soup.find("div", class_='carousel_items').find("article", class_='carousel_item').find("a")['data-fancybox-href']
     final_dict["feat_img"] = f"https://www.jpl.nasa.gov{feat_img}"
-
-    browser.quit()
 
     #Getting the weather from twitter
     url_twitter = 'https://twitter.com/marswxreport?lang=en'
@@ -43,10 +45,9 @@ def scrape():
 
     html = browser.html
     soup = bs(html, 'html.parser')
+    soup
 
     final_dict["weather"] = soup.find("div", class_='css-901oao r-hkyrab r-1qd0xha r-a023e6 r-16dba41 r-ad9z0x r-bcqeeo r-bnwqim r-qvutc0').find("span").text
-
-    browser.quit()
 
     #Getting Mars facts
     url_facts = 'https://space-facts.com/mars/'
@@ -67,6 +68,7 @@ def scrape():
 
     html = browser.html
     soup = bs(html, 'html.parser')
+    soup
 
     sm_title = soup.find("div", class_='content').find("section", class_='block metadata').find('h2').text
     sm_img = soup.find("div", class_='wide-image-wrapper').find("img", class_='wide-image')['src']
@@ -77,14 +79,13 @@ def scrape():
 
     hemisphere_image_urls.append(dict(hem_dict))
 
-    browser.quit()
-
     #valles_marineris
     url_vm = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced'
     browser.visit(url_vm)
 
     html = browser.html
     soup = bs(html, 'html.parser')
+    soup
 
     vm_title = soup.find("div", class_='content').find("section", class_='block metadata').find('h2').text
     vm_img = soup.find("div", class_='wide-image-wrapper').find("img", class_='wide-image')['src']
@@ -95,14 +96,13 @@ def scrape():
 
     hemisphere_image_urls.append(dict(hem_dict))
 
-    browser.quit()
-
     #schiaparelli
     url_sch = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced'
     browser.visit(url_sch)
 
     html = browser.html
     soup = bs(html, 'html.parser')
+    soup
 
     sch_title = soup.find("div", class_='content').find("section", class_='block metadata').find('h2').text
     sch_img = soup.find("div", class_='wide-image-wrapper').find("img", class_='wide-image')['src']
@@ -113,14 +113,13 @@ def scrape():
 
     hemisphere_image_urls.append(dict(hem_dict))
 
-    browser.quit()
-
     #cerberus
     url_cer = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced'
     browser.visit(url_cer)
 
     html = browser.html
     soup = bs(html, 'html.parser')
+    soup
 
     cer_title = soup.find("div", class_='content').find("section", class_='block metadata').find('h2').text
     cer_img = soup.find("div", class_='wide-image-wrapper').find("img", class_='wide-image')['src']
@@ -131,8 +130,8 @@ def scrape():
 
     hemisphere_image_urls.append(dict(hem_dict))
 
-    browser.quit()
-
     final_dict["hem_img_urls"] = hemisphere_image_urls
+
+    browser.quit()
 
     return final_dict
