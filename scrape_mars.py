@@ -44,7 +44,26 @@ def scrape():
 
     browser.quit()
 
-   
+    #Getting the weather from Twitter
+    browser = init_browser()
+    url_tw = 'https://twitter.com/marswxreport?lang=en'
+    browser.visit(url_tw)
+
+    html = browser.html
+    soup_tw = bs(html, 'html.parser')
+    soup_tw
+
+    tags = soup_tw("span")
+    for tag in tags:
+        weather = tag.text
+        if "InSight sol" in weather:
+            break
+        else:
+            continue
+
+    final_dict["weather"] = weather
+
+    browser.quit()
 
     #Getting Mars facts
     url_facts = 'https://space-facts.com/mars/'
