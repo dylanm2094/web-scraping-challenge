@@ -1,0 +1,175 @@
+body {
+  background: lightgrey;
+  padding: 0;
+  margin: 0;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  color: black;
+  background: rgb(255, 255, 255);
+}
+
+h2 {
+  margin-bottom: 3px;
+  font-size: 18px;
+  color: black;
+  background: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.navbar{
+  background: rgb(255, 255, 255);
+}
+
+.container{
+  max-width: max-content;
+  min-width: min-content;
+}
+
+.main {
+  float: left;
+  margin-top: 60px;
+  margin-right: 10px;
+  width:800px;
+  padding: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.sub {
+  float: right;
+  margin-top: 60px;
+  margin-left: 10px;
+  width:550px;
+  padding: 10px;
+  background: rgb(255, 255, 255);
+}
+
+.compare {
+  margin-top: 60px;
+  width:742px;
+  padding: 20px;
+  background: rgb(255, 255, 255);
+}
+
+#main-chart {
+  width: 400px;
+  height: 250px;
+  float: left;
+}
+
+#lrg-chart {
+  width: 600px;
+  height: 450px;
+}
+
+#middle {
+  text-align: center;
+}
+
+#fig1{
+  width: 250px;
+  height: 150px;
+  float: left;
+  margin-left: 10px;
+}
+
+#fig2{
+  width: 250px;
+  height: 150px;
+  float: right;
+  margin-right: 10px;
+}
+
+#fig3{
+  width: 250px;
+  height: 150px;
+  float: left;
+  margin-left: 10px;
+}
+
+#fig4{
+  width: 250px;
+  height: 150px;
+  float: right;
+  margin-right: 10px;
+}
+
+#fig5{
+  width: 350px;
+  height: 250px;
+}
+
+#fig6{
+  width: 350px;
+  height: 250px;
+}
+
+#fig7{
+  width: 350px;
+  height: 250px;
+}
+
+#fig8{
+  width: 350px;
+  height: 250px;
+}
+
+#hide{
+  visibility: hidden;
+}
+
+@media (max-width: 1410px) {
+  .main {
+    margin-top: 60px;
+    width: 100%;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+  }
+  
+  .sub {
+    margin-top: 60px;
+    width: 100%;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+  }
+
+  #fig1{
+    width: 250px;
+    height: 150px;
+    float: left;
+  }
+  
+  #fig2{
+    width: 250px;
+    height: 150px;
+    float: left;
+  }
+  
+  #fig3{
+    width: 250px;
+    height: 150px;
+    float: left;
+  }
+  
+  #fig4{
+    width: 250px;
+    height: 150px;
+    float: left;
+  }
+}
+
+@media (max-width: 767px) {
+  .compare {
+    margin-top: 60px;
+    width: 100%;
+    padding: 20px;
+    background: rgb(255, 255, 255);
+  }
+
+  #hide{
+    visibility: visible;
+  }
+}

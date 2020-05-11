@@ -7,15 +7,47 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars Info</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
     <div class="container-fluid">
         <div class="jumbotron text-center">
             <h1>Mission to Mars</h1>
-            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Get Data!</a></p>
+            <p><a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a></p>
         </div>
     </div>
+    <section class="container">
+        <div class="main">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Latest Mars News</h1>
+                    <hr>
+                    <h2>{{ mars.headline }}</h2>
+                    <p> {{ mars.teaser }}</p>
+                    <br/>
+                </div> 
+            </div>
+        </div>  
+    </section>
+    
+    <section class="container">
+        <div class="main">
+          <h1>Featured Image</h1>
+          <hr>
+          <div>
+            <img id="main-chart" src="{{ mars.feat_img }}" alt="Featured Image">
+          </div>
+        </div>  
+    
+        <div class="sub">
+            <h1>Mars Facts</h1>
+            <hr>
+            <div class="table-responsive table-striped table-hover">
+                {{ mars.mars_facts }}
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

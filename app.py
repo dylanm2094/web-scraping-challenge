@@ -15,7 +15,7 @@ mongo = PyMongo(app, uri=conn)
 def home():
 
     # Find one record of data from the mongo database
-    mars_data = mongo.db.collection.find()
+    mars_data = mongo.db.collection.find_one()
 
     # Return template and data
     return render_template("index.html", mars=mars_data)
