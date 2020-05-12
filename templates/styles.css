@@ -20,13 +20,10 @@ h2 {
   text-align: center;
 }
 
-.navbar{
-  background: rgb(255, 255, 255);
-}
-
 .container{
   max-width: max-content;
   min-width: min-content;
+  text-align: center;
 }
 
 .main {
@@ -47,33 +44,20 @@ h2 {
   background: rgb(255, 255, 255);
 }
 
-.compare {
-  margin-top: 60px;
-  width:742px;
-  padding: 20px;
-  background: rgb(255, 255, 255);
-}
-
 #main-chart {
   width: 400px;
   height: 250px;
   float: left;
 }
 
-#lrg-chart {
-  width: 600px;
-  height: 450px;
-}
-
 #middle {
   text-align: center;
 }
 
-#fig1{
-  width: 250px;
-  height: 150px;
+#fig{
+  width: 100px;
+  height: 100px;
   float: left;
-  margin-left: 10px;
 }
 
 #fig2{

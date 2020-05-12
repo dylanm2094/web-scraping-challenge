@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Mars Info</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
   <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -33,21 +34,46 @@
     
     <section class="container">
         <div class="main">
-          <h1>Featured Image</h1>
-          <hr>
-          <div>
-            <img id="main-chart" src="{{ mars.feat_img }}" alt="Featured Image">
+          <div class="col-md-8">
+            <h2>Featured Mars Image</h2>
+              <img src="{{mars.feat_img | default('static/images/error.png', true) }}" class="img-responsive"
+              alt="Responsive image">
           </div>
-        </div>  
+        </div> 
+        
+        <div class="sub col-md-4">
+            <h4>Current Weather on Mars</h4>
+            <p>{{ mars.weather }}</p>
+        </div>
     
-        <div class="sub">
-            <h1>Mars Facts</h1>
-            <hr>
-            <div class="table-responsive table-striped table-hover">
-                {{ mars.mars_facts }}
-            </div>
+        <div class="sub col-md-4">
+            <h4>Mars Facts</h4>
+            {{mars.mars_facts | safe}}
         </div>
     </section>
+
+    <section class="container" id="middle">
+        <div class="row">
+            <div class="col-12">
+                <br/>
+                <h2>Mars Hemispheres</h2>
+                <hr/>
+            </div>
+        </div>
+        <div class="row justify-content-center"></div>
+            {% for dict in mars.hem_img_urls %}
+            <div class="col-6 justify-content-center">
+                <a>
+                    <img id="fig" src="{{ dict.img_url | default('static/images/error.png', true) }}" class="img-responsive" alt="Hemishpere">
+                </a>
+                <h4>{{ dict.title }}</h4>
+                <hr/>
+                <br/>
+            </div>
+            {% endfor %}
+        </div>  
+    </section>
+
 </body>
 
 </html>

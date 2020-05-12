@@ -5,6 +5,7 @@ from splinter import Browser
 import pymongo
 import pandas as pd
 import re
+import time
 
 
 def init_browser():
@@ -21,6 +22,7 @@ def scrape():
     url_news = 'https://mars.nasa.gov/news/?page=0&per_page=40&order=publish_date+desc%2Ccreated_at+desc&search=&category=19%2C165%2C184%2C204&blank_scope=Latest'
     browser.visit(url_news)
 
+    time.sleep(5)
     html_news = browser.html
     soup_news = bs(html_news, "html.parser")
     soup_news
@@ -35,6 +37,7 @@ def scrape():
     url_img = 'https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars'
     browser.visit(url_img)
 
+    time.sleep(5)
     html_img = browser.html
     soup_img = bs(html_img, 'html.parser')
     soup_img
@@ -49,6 +52,7 @@ def scrape():
     url_tw = 'https://twitter.com/marswxreport?lang=en'
     browser.visit(url_tw)
 
+    time.sleep(5)
     html = browser.html
     soup_tw = bs(html, 'html.parser')
     soup_tw
@@ -70,7 +74,8 @@ def scrape():
     tables = pd.read_html(url_facts)
 
     df = tables[0]
-    mars_facts = df.to_html()
+    df.to_html("fact_table.html",index=False, header=False)
+    mars_facts = df.to_html(index=False, header=False)
 
     final_dict["mars_facts"] = mars_facts
 
@@ -83,6 +88,7 @@ def scrape():
     url_sm = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/syrtis_major_enhanced'
     browser.visit(url_sm)
 
+    time.sleep(5)
     html_sm = browser.html
     soup_sm = bs(html_sm, 'html.parser')
     soup_sm
@@ -103,6 +109,7 @@ def scrape():
     url_vm = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/valles_marineris_enhanced'
     browser.visit(url_vm)
 
+    time.sleep(5)
     html_vm = browser.html
     soup_vm = bs(html_vm, 'html.parser')
     soup_vm
@@ -123,6 +130,7 @@ def scrape():
     url_sch = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/schiaparelli_enhanced'
     browser.visit(url_sch)
 
+    time.sleep(5)
     html_sch = browser.html
     soup_sch = bs(html_sch, 'html.parser')
     soup_sch
@@ -143,6 +151,7 @@ def scrape():
     url_cer = 'https://astrogeology.usgs.gov/search/map/Mars/Viking/cerberus_enhanced'
     browser.visit(url_cer)
 
+    time.sleep(5)
     html_cer = browser.html
     soup_cer = bs(html_cer, 'html.parser')
     soup_cer
